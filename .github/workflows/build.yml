@@ -22,10 +22,9 @@ jobs:
       - name: Setup Capacitor & Icons
         run: |
           npx cap init "Butce Asistani" "com.butce.app" --web-dir=www
-          # İkonu geçici olarak assets klasörüne kopyala
+          # Eğer icon.png varsa Android ikonlarını oluştur
           mkdir -p assets
           cp www/icon.png assets/icon.png || true
-          # Android ikonlarını otomatik oluştur
           npx capacitor-assets generate --android
           npx cap add android
           npx cap sync android
