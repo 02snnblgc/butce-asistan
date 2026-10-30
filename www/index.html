@@ -5,86 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#8b5cf6">
   <title>Bütçe Asistanı Pro</title>
+  <link rel="icon" type="image/png" href="icon.png">
   
-<link rel="icon" href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAQABAADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//9k=">  
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <style>
-    :root { --bg-primary:#f8fafc; --bg-secondary:#fff; --text-main:#1e293b; --text-muted:#64748b; --border-color:#e2e8f0; --card-shadow:0 10px 25px -5px rgba(0,0,0,.05); --accent:#8b5cf6; --accent-gradient:linear-gradient(135deg,#a78bfa,#7c3aed); --pastel-bg:#f5f3ff; }
-    [data-theme="dark"] { --bg-primary:#0f172a; --bg-secondary:#1e293b; --text-main:#f8fafc; --text-muted:#94a3b8; --border-color:#334155; --card-shadow:0 10px 25px -5px rgba(0,0,0,.3); --pastel-bg:#1e293b; }
-    [data-accent="mint"] { --accent:#10b981; --accent-gradient:linear-gradient(135deg,#34d399,#059669); --pastel-bg:#ecfdf5; }
-    [data-accent="peach"] { --accent:#f97316; --accent-gradient:linear-gradient(135deg,#fb923c,#ea580c); --pastel-bg:#fff7ed; }
-    
-    * { box-sizing:border-box; margin:0; padding:0; font-family:'Plus Jakarta Sans',sans-serif; -webkit-tap-highlight-color: transparent; }
-    body { background:var(--bg-primary); color:var(--text-main); min-height:100vh; padding:15px; transition:.3s; padding-bottom: 50px; }
-    
-    #auth-screen { display:flex; align-items:center; justify-content:center; min-height:90vh; }
-    .auth-card { background:var(--bg-secondary); padding:30px; border-radius:24px; width:100%; max-width:400px; text-align:center; box-shadow:var(--card-shadow); border: 1px solid var(--border-color); }
-    .avatar-uploader { position:relative; width:80px; height:80px; margin:0 auto 20px; }
-    .avatar-preview { width:80px; height:80px; border-radius:50%; background:var(--pastel-bg); border: 2px solid var(--border-color); display:flex; align-items:center; justify-content:center; font-size:2rem; color:var(--accent); overflow:hidden; }
-    .avatar-preview img { width:100%; height:100%; object-fit:cover; }
-    .avatar-edit-label { position:absolute; bottom:0; right:0; width:28px; height:28px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:.8rem; }
-    
-    .form-group { margin-bottom:15px; text-align:left; }
-    .form-group label { display:block; margin-bottom:6px; font-weight:600; font-size:.88rem; }
-    .form-control { width:100%; padding:12px; border-radius:12px; border:1px solid var(--border-color); background:var(--bg-primary); color:var(--text-main); font-size:.95rem; outline: none; }
-    .form-control:focus { border-color: var(--accent); }
-    .btn { width:100%; padding:12px; border-radius:12px; border:none; background:var(--accent-gradient); color:#fff; font-weight:600; cursor:pointer; font-size: 1rem; }
-    .btn-secondary { background:var(--pastel-bg); color:var(--text-main); border:1px solid var(--border-color); }
-    .icon-btn { background:var(--pastel-bg); border:1px solid var(--border-color); color:var(--text-main); width:40px; height:40px; border-radius:12px; cursor:pointer; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; }
-    
-    #app-screen { max-width:1000px; margin:0 auto; display:none; }
-    .app-header { display:flex; justify-content:space-between; align-items:center; background:var(--bg-secondary); padding:15px 20px; border-radius:20px; box-shadow:var(--card-shadow); border: 1px solid var(--border-color); margin-bottom:20px; }
-    .user-info { display:flex; align-items:center; gap:10px; }
-    .user-avatar { width:40px; height:40px; border-radius:50%; background:var(--accent-gradient); color:#fff; display:flex; align-items:center; justify-content:center; font-weight: bold; overflow:hidden; }
-    .user-avatar img { width:100%; height:100%; object-fit:cover; }
-    .settings-bar { display:flex; gap:8px; }
-    
-    .period-selector { display:flex; justify-content:center; align-items:center; gap:15px; margin-bottom:20px; background: var(--bg-secondary); padding: 10px; border-radius: 16px; border: 1px solid var(--border-color); }
-    .period-selector input { width: auto; border: none; background: transparent; font-weight: bold; font-size: 1rem; color: var(--text-main); }
-    
-    .dashboard-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:15px; margin-bottom:20px; }
-    .dash-card { background:var(--bg-secondary); padding:20px; border-radius:20px; box-shadow:var(--card-shadow); border: 1px solid var(--border-color); position: relative; overflow: hidden; }
-    .dash-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent-gradient); }
-    .dash-card h4 { font-size: .85rem; color: var(--text-muted); margin-bottom: 5px; }
-    .amount { font-size:1.5rem; font-weight:700; }
-    .income { color:#10b981; } .expense { color:#ef4444; } .balance { color:var(--accent); }
-    
-    .content-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-    @media(max-width:768px) { .content-grid { grid-template-columns:1fr; } }
-    .card { background:var(--bg-secondary); padding:20px; border-radius:20px; box-shadow:var(--card-shadow); border: 1px solid var(--border-color); margin-bottom: 15px; }
-    .card h3 { margin-bottom: 15px; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
-    
-    .transaction-list { max-height:400px; overflow-y:auto; padding-right: 5px; }
-    .transaction-item { display:flex; justify-content:space-between; align-items: center; padding:12px; background: var(--pastel-bg); border-radius:12px; margin-bottom:8px; border: 1px solid var(--border-color); }
-    .transaction-info h5 { font-size: .95rem; margin-bottom: 3px; }
-    .transaction-info p { font-size: .75rem; color: var(--text-muted); }
-    .badge { font-size: .7rem; padding: 3px 8px; border-radius: 6px; font-weight: 600; display: inline-block; margin-top: 4px; }
-    .badge.danger { background:#fee2e2; color:#dc2626; } .badge.success { background:#d1fae5; color:#047857; } .badge.normal { background:#e0f2fe; color:#0369a1; }
-    .tx-actions { display:flex; gap:5px; margin-left: 10px; }
-    .tx-actions button { width:28px; height:28px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-secondary); color:var(--text-main); cursor:pointer; font-size:.75rem; }
-    
-    .category-summary { display: flex; flex-direction: column; gap: 8px; }
-    .cat-row { display: flex; justify-content: space-between; padding: 8px 12px; background: var(--pastel-bg); border-radius: 8px; font-size: .85rem; border: 1px solid var(--border-color); }
-
-    .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,.5); align-items:center; justify-content:center; z-index:1000; padding: 15px; }
-    .modal.open { display:flex; }
-    .modal-content { background:var(--bg-secondary); padding:25px; border-radius:20px; width:100%; max-width:400px; border: 1px solid var(--border-color); max-height: 90vh; overflow-y: auto; }
-    .theme-options { display:flex; gap:10px; margin-bottom: 20px; }
-    .theme-circle { width:35px; height:35px; border-radius:50%; cursor:pointer; border: 2px solid var(--border-color); }
-    
-    .alarm-content { text-align:center; }
-    .alarm-pulse { width:80px; height:80px; border-radius:50%; background:#ef4444; color:#fff; display:flex; align-items:center; justify-content:center; font-size:2.5rem; margin:0 auto 20px; animation:pulse 1s infinite; }
-    @keyframes pulse { 0% { transform:scale(1); box-shadow: 0 0 0 0 rgba(239,68,68,.7); } 70% { transform:scale(1.1); box-shadow: 0 0 0 20px rgba(239,68,68,0); } 100% { transform:scale(1); box-shadow: 0 0 0 0 rgba(239,68,68,0); } }
-    
-    #toast-container { position:fixed; bottom:20px; left:50%; transform: translateX(-50%); z-index:2000; width: 90%; max-width: 400px; }
-    .toast { background:var(--bg-secondary); padding:12px 20px; border-radius:12px; margin-top:10px; box-shadow:var(--card-shadow); border-left:4px solid var(--accent); font-size: .9rem; font-weight: 600; text-align: center; animation: slideUp 0.3s ease; }
-    @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-  </style>
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
+<!-- GİRİŞ EKRANI -->
 <div id="auth-screen">
   <div class="auth-card">
     <h2 style="margin-bottom: 20px; color: var(--accent);"><i class="fa-solid fa-wallet"></i> Bütçe Asistanı</h2>
@@ -98,11 +27,16 @@
         <label>Kullanıcı Adı</label>
         <input type="text" id="username-input" class="form-control" placeholder="Adınızı girin..." required>
       </div>
+      <div class="form-group">
+        <label>PIN Kodu (4-6 haneli)</label>
+        <input type="password" id="pin-input" class="form-control" placeholder="••••" inputmode="numeric" maxlength="6" required>
+      </div>
       <button type="submit" class="btn" id="auth-submit-btn">Giriş Yap</button>
     </form>
   </div>
 </div>
 
+<!-- ANA UYGULAMA -->
 <div id="app-screen">
   <header class="app-header">
     <div class="user-info">
@@ -150,9 +84,16 @@
               <option value="expense" selected>Gider</option>
             </select>
           </div>
+          <div class="form-group" id="expense-cat-group">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <label style="margin: 0;">Gider Kalemi</label>
+              <button type="button" class="btn-secondary" style="width:auto; padding: 4px 8px; font-size: .75rem; border-radius: 6px;" onclick="openCategoryModal()">+ Yeni Ekle</button>
+            </div>
+            <select id="expense-category" class="form-control"></select>
+          </div>
           <div class="form-group">
-            <label>Kategori / Açıklama</label>
-            <input type="text" id="tx-title" class="form-control" placeholder="Örn: Maaş, Kira, Elektrik..." required>
+            <label>Açıklama / Detay</label>
+            <input type="text" id="tx-title" class="form-control" placeholder="Örn: Ocak Kirası..." required>
           </div>
           <div class="form-group">
             <label>Tutar (₺)</label>
@@ -162,9 +103,8 @@
             <label>Son Ödeme Tarihi</label>
             <input type="date" id="tx-date" class="form-control" required>
           </div>
-          <div class="form-group" style="display: flex; align-items: center; gap: 8px;">
-            <input type="checkbox" id="tx-paid" style="width: 18px; height: 18px;">
-            <label for="tx-paid" style="margin: 0; cursor: pointer;">Ödendi olarak işaretle</label>
+          <div class="form-group" style="display: flex; gap: 15px;">
+            <label style="display: flex; align-items: center; gap: 5px;"><input type="checkbox" id="tx-paid"> Ödendi</label>
           </div>
           <button type="submit" class="btn">İşlemi Kaydet</button>
         </form>
@@ -180,340 +120,43 @@
   </div>
 </div>
 
+<!-- AYARLAR MODALI -->
 <div class="modal" id="settings-modal">
   <div class="modal-content">
     <h3 style="margin-bottom: 20px;">Ayarlar</h3>
     <div class="form-group">
-      <label>Tema Rengi</label>
-      <div class="theme-options">
-        <div class="theme-circle" style="background:#8b5cf6" data-accent="lavender"></div>
-        <div class="theme-circle" style="background:#10b981" data-accent="mint"></div>
-        <div class="theme-circle" style="background:#f97316" data-accent="peach"></div>
-      </div>
-    </div>
-    <div class="form-group">
       <label>Alarm Testi</label>
-      <button type="button" class="btn btn-secondary" id="btn-test-alarm" style="margin-top: 5px;"><i class="fa-solid fa-bell"></i> Sesli ve Görüntülü Alarmı Test Et</button>
+      <button type="button" class="btn btn-secondary" id="btn-test-alarm"><i class="fa-solid fa-bell"></i> Sesli Alarmı Test Et</button>
     </div>
-    <button type="button" class="btn btn-secondary" data-close-modal style="margin-top: 10px;">Ayarları Kapat</button>
+    <button type="button" class="btn btn-secondary" data-close-modal>Ayarları Kapat</button>
   </div>
 </div>
 
+<!-- YENİ KATEGORİ MODALI -->
+<div class="modal" id="category-modal">
+  <div class="modal-content">
+    <h3 style="margin-bottom: 20px;">Yeni Gider Kalemi</h3>
+    <div class="form-group">
+      <label>Kalem Adı</label>
+      <input type="text" id="new-cat-input" class="form-control" placeholder="Örn: Kredi Kartı Ekstresi">
+    </div>
+    <button type="button" class="btn" onclick="addNewCategory()">Ekle</button>
+    <button type="button" class="btn btn-secondary" data-close-modal style="margin-top: 10px;">İptal</button>
+  </div>
+</div>
+
+<!-- ALARM MODALI -->
 <div class="modal" id="alarm-modal">
   <div class="modal-content alarm-content">
     <div class="alarm-pulse"><i class="fa-solid fa-bell"></i></div>
     <h2 style="color: #ef4444; margin-bottom: 10px;">Ödeme Hatırlatması!</h2>
-    <p style="color: var(--text-muted); margin-bottom: 20px;">Tarihi geçen ödemeleriniz var!</p>
     <div id="alarm-body" style="text-align: left; margin-bottom: 20px;"></div>
-    <button type="button" class="btn" id="alarm-ack" style="background: #ef4444;">Sesi Kapat ve Anladım</button>
+    <button type="button" class="btn" id="alarm-ack" style="background: #ef4444;">Sesi Kapat</button>
   </div>
 </div>
 
 <div id="toast-container"></div>
-
 <audio id="alarm-sound" src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=" preload="auto" loop></audio>
-<script>
-  
-/* =========================================
-   UYGULAMA MANTIĞI 
-   ========================================= */
-
-function showToast(msg, type = 'info') {
-  const box = document.getElementById('toast-container');
-  const el = document.createElement('div');
-  el.className = 'toast';
-  el.style.borderLeftColor = type === 'error' ? '#ef4444' : type === 'success' ? '#10b981' : 'var(--accent)';
-  el.innerHTML = `<i class="fa-solid ${type === 'error' ? 'fa-circle-exclamation' : type === 'success' ? 'fa-circle-check' : 'fa-circle-info'}"></i> ${msg}`;
-  box.appendChild(el);
-  setTimeout(() => { el.style.opacity = '0'; setTimeout(() => el.remove(), 300); }, 3000);
-}
-
-const DB = {
-  get user() { return localStorage.getItem('butce_user'); },
-  set user(val) { val ? localStorage.setItem('butce_user', val) : localStorage.removeItem('butce_user'); },
-  get data() { return JSON.parse(localStorage.getItem('butce_data')) || {}; },
-  set data(val) { localStorage.setItem('butce_data', JSON.stringify(val)); },
-  
-  getPeriod(period) {
-    if (!this.user) return { transactions: [] };
-    const d = this.data;
-    if (!d[this.user]) d[this.user] = {};
-    if (!d[this.user][period]) d[this.user][period] = { transactions: [] };
-    return d[this.user][period];
-  },
-  savePeriod(period, periodData) {
-    const d = this.data;
-    if (!d[this.user]) d[this.user] = {};
-    d[this.user][period] = periodData;
-    this.data = d;
-  },
-  getProfile() { return JSON.parse(localStorage.getItem('butce_profiles'))?.[this.user] || null; },
-  saveProfile(profile) {
-    const p = JSON.parse(localStorage.getItem('butce_profiles')) || {};
-    p[this.user] = profile;
-    localStorage.setItem('butce_profiles', JSON.stringify(p));
-  }
-};
-
-const AlarmSystem = {
-  audio: null,
-  init() { this.audio = document.getElementById('alarm-sound'); },
-  start() {
-    if (this.audio) {
-      this.audio.volume = 1;
-      this.audio.play().catch(e => console.warn("Ses çalınamadı.", e));
-    }
-    document.getElementById('alarm-modal').classList.add('open');
-  },
-  stop() {
-    if (this.audio) {
-      this.audio.pause();
-      this.audio.currentTime = 0;
-    }
-    document.getElementById('alarm-modal').classList.remove('open');
-  }
-};
-
-document.addEventListener('DOMContentLoaded', () => {
-  AlarmSystem.init();
-  const savedTheme = localStorage.getItem('butce_theme') || 'light';
-  document.documentElement.setAttribute('data-theme', savedTheme);
-  updateThemeIcon(savedTheme);
-
-  if (DB.user) {
-    showApp();
-  } else {
-    document.getElementById('auth-screen').style.display = 'flex';
-  }
-
-  let tempAvatar = null;
-  document.getElementById('avatar-file').addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (ev) => {
-      tempAvatar = ev.target.result;
-      document.getElementById('avatar-preview').innerHTML = `<img src="${tempAvatar}">`;
-    };
-    reader.readAsDataURL(file);
-  });
-
-  document.getElementById('login-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const u = document.getElementById('username-input').value.trim();
-    if (!u) return;
-    DB.user = u;
-    if (tempAvatar) DB.saveProfile({ avatar: tempAvatar });
-    showApp();
-  });
-
-  document.querySelector('[data-action="logout"]').addEventListener('click', () => {
-    DB.user = null;
-    location.reload();
-  });
-
-  document.querySelector('[data-action="toggle-theme"]').addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-theme');
-    const next = current === 'light' ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('butce_theme', next);
-    updateThemeIcon(next);
-  });
-
-  function updateThemeIcon(theme) {
-    document.getElementById('theme-icon').className = theme === 'light' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
-  }
-
-  document.querySelectorAll('.theme-circle').forEach(el => {
-    el.addEventListener('click', () => {
-      document.documentElement.setAttribute('data-accent', el.dataset.accent);
-    });
-  });
-
-  document.querySelectorAll('[data-close-modal]').forEach(btn => {
-    btn.addEventListener('click', function() {
-      this.closest('.modal').classList.remove('open');
-    });
-  });
-
-  document.querySelector('[data-action="open-settings"]').addEventListener('click', () => {
-    document.getElementById('settings-modal').classList.add('open');
-  });
-
-  document.getElementById('btn-test-alarm').addEventListener('click', () => {
-    AlarmSystem.start();
-  });
-  document.getElementById('alarm-ack').addEventListener('click', () => {
-    AlarmSystem.stop();
-  });
-
-  const periodInput = document.getElementById('active-period');
-  const today = new Date();
-  periodInput.value = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}`;
-  
-  document.getElementById('prev-month').addEventListener('click', () => changeMonth(-1));
-  document.getElementById('next-month').addEventListener('click', () => changeMonth(1));
-  periodInput.addEventListener('change', renderAll);
-
-  function changeMonth(dir) {
-    const [y, m] = periodInput.value.split('-').map(Number);
-    const d = new Date(y, m - 1 + dir, 1);
-    periodInput.value = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
-    renderAll();
-  }
-
-  document.getElementById('transaction-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const period = periodInput.value;
-    const data = DB.getPeriod(period);
-    
-    data.transactions.push({
-      id: Date.now().toString(),
-      type: document.getElementById('tx-type').value,
-      title: document.getElementById('tx-title').value,
-      amount: Number(document.getElementById('tx-amount').value),
-      date: document.getElementById('tx-date').value,
-      paid: document.getElementById('tx-paid').checked
-    });
-    
-    DB.savePeriod(period, data);
-    renderAll();
-    showToast("İşlem kaydedildi.", "success");
-    document.getElementById('tx-title').value = '';
-    document.getElementById('tx-amount').value = '';
-    document.getElementById('tx-paid').checked = false;
-  });
-
-  document.getElementById('transaction-list').addEventListener('click', (e) => {
-    const btn = e.target.closest('button');
-    if (!btn) return;
-    const period = periodInput.value;
-    const data = DB.getPeriod(period);
-    const id = btn.dataset.id;
-    
-    if (btn.classList.contains('del-btn')) {
-      if (confirm('Bu işlemi silmek istediğinize emin misiniz?')) {
-        data.transactions = data.transactions.filter(t => t.id !== id);
-        DB.savePeriod(period, data);
-        renderAll();
-        showToast("İşlem silindi.", "info");
-      }
-    } else if (btn.classList.contains('paid-btn')) {
-      const tx = data.transactions.find(t => t.id === id);
-      if (tx) {
-        tx.paid = !tx.paid;
-        DB.savePeriod(period, data);
-        renderAll();
-      }
-    }
-  });
-
-  function showApp() {
-    document.getElementById('auth-screen').style.display = 'none';
-    document.getElementById('app-screen').style.display = 'block';
-    document.getElementById('display-username').innerText = DB.user;
-    
-    const profile = DB.getProfile();
-    if (profile && profile.avatar) {
-      document.getElementById('user-avatar').innerHTML = `<img src="${profile.avatar}">`;
-    } else {
-      document.getElementById('user-avatar').innerText = DB.user.charAt(0).toUpperCase();
-    }
-
-    document.getElementById('tx-date').value = new Date().toISOString().slice(0,10);
-    renderAll();
-    setTimeout(checkDuePayments, 1500);
-  }
-
-  function renderAll() {
-    const period = periodInput.value;
-    const data = DB.getPeriod(period);
-    const list = document.getElementById('transaction-list');
-    const catSummary = document.getElementById('category-summary');
-    
-    list.innerHTML = '';
-    catSummary.innerHTML = '';
-    
-    let income = 0, expense = 0;
-    const cats = {};
-
-    if (data.transactions.length === 0) {
-      list.innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:20px;">Bu dönemde kayıt yok.</p>';
-      catSummary.innerHTML = '<p style="color:var(--text-muted);font-size: .85rem;">Veri yok.</p>';
-    }
-
-    const sorted = [...data.transactions].sort((a,b) => b.date.localeCompare(a.date));
-
-    sorted.forEach(tx => {
-      if (tx.type === 'income') income += tx.amount;
-      else expense += tx.amount;
-
-      const key = tx.type + '|' + tx.title;
-      if (!cats[key]) cats[key] = { type: tx.type, name: tx.title, total: 0 };
-      cats[key].total += tx.amount;
-
-      const isOverdue = tx.type === 'expense' && !tx.paid && new Date(tx.date) <= new Date();
-      const badge = tx.type === 'income' 
-        ? '<span class="badge success">Gelir</span>' 
-        : (tx.paid ? '<span class="badge success">Ödendi</span>' : (isOverdue ? '<span class="badge danger">Gecikti</span>' : '<span class="badge normal">Bekliyor</span>'));
-
-      list.innerHTML += `
-        <div class="transaction-item">
-          <div class="transaction-info">
-            <h5>${tx.title}</h5>
-            <p>${tx.date} ${badge}</p>
-          </div>
-          <div style="display: flex; align-items: center;">
-            <span style="font-weight:bold; color:${tx.type === 'income' ? '#10b981' : '#ef4444'}; margin-right: 10px;">
-              ${tx.type === 'income' ? '+' : '-'}${tx.amount.toLocaleString('tr-TR')} ₺
-            </span>
-            <div class="tx-actions">
-              ${tx.type === 'expense' ? `<button class="paid-btn" data-id="${tx.id}" title="Ödendi"><i class="fa-solid fa-check"></i></button>` : ''}
-              <button class="del-btn" data-id="${tx.id}" title="Sil"><i class="fa-solid fa-trash"></i></button>
-            </div>
-          </div>
-        </div>
-      `;
-    });
-
-    document.getElementById('total-income').innerText = income.toLocaleString('tr-TR') + ' ₺';
-    document.getElementById('total-expense').innerText = expense.toLocaleString('tr-TR') + ' ₺';
-    document.getElementById('net-balance').innerText = (income - expense).toLocaleString('tr-TR') + ' ₺';
-
-    Object.values(cats).sort((a,b) => b.total - a.total).forEach(c => {
-      catSummary.innerHTML += `
-        <div class="cat-row">
-          <span>${c.type === 'income' ? '↑' : '↓'} ${c.name}</span>
-          <span style="color: ${c.type === 'income' ? '#10b981' : '#ef4444'}">${c.total.toLocaleString('tr-TR')} ₺</span>
-        </div>
-      `;
-    });
-  }
-
-  function checkDuePayments() {
-    const period = periodInput.value;
-    const data = DB.getPeriod(period);
-    const today = new Date();
-    today.setHours(0,0,0,0);
-    
-    const due = data.transactions.filter(tx => {
-      if (tx.type !== 'expense' || tx.paid) return false;
-      return new Date(tx.date) <= today;
-    });
-
-    if (due.length > 0) {
-      document.getElementById('alert-banner').style.display = 'block';
-      document.getElementById('alert-banner').innerText = `⚠️ ${due.length} adet ödeme tarihi geçmiş/gelecek var!`;
-      
-      setTimeout(() => {
-        document.getElementById('alarm-body').innerHTML = due.map(tx => `<p style="margin-bottom: 5px;"><strong>${tx.title}</strong> - ${tx.amount} ₺</p>`).join('');
-        AlarmSystem.start();
-      }, 1000);
-    } else {
-      document.getElementById('alert-banner').style.display = 'none';
-    }
-  }
-});
-</script>
+<script src="js/app.js"></script>
 </body>
 </html>
