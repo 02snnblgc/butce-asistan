@@ -24,16 +24,27 @@ jobs:
           npx cap add android
           npx cap sync android
 
-      - name: Fix Kotlin Duplicate Classes
+      - name: Fix Kotlin Conflicts (Aggressive)
         run: |
           cd android
-          # Kotlin çakışmasını çözmek için build.gradle dosyasının en altına kural ekliyoruz
+          # 1. Tüm alt modüllerde eski jdk7 ve jdk8 kütüphanelerini zorla hariç tut
           echo "" >> build.gradle
-          echo "configurations.all {" >> build.gradle
-          echo "    resolutionStrategy {" >> build.gradle
-          echo "        force 'org.jetbrains.kotlin:kotlin-stdlib:1.8.22'" >> build.gradle
+          echo "subprojects {" >> build.gradle
+          echo "    configurations.all {" >> build.gradle
+          echo "        exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk7'" >> build.gradle
+          echo "        exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'" >> build.gradle
+          echo "        resolutionStrategy {" >> build.gradle
+          echo "            force 'org.jetbrains.kotlin:kotlin-stdlib:1.8.22'" >> build.gradle
+          echo "        }" >> build.gradle
           echo "    }" >> build.gradle
           echo "}" >> build.gradle
+          
+          # 2. app modülünde de ayrıca hariç tutma işlemini garantile
+          echo "" >> app/build.gradle
+          echo "configurations.all {" >> app/build.gradle
+          echo "    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk7'" >> app/build.gradle
+          echo "    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'" >> app/build.gradle
+          echo "}" >> app/build.gradle
           cd ..
 
       - name: Setup Java
