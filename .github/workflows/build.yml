@@ -17,17 +17,22 @@ jobs:
         run: |
           npm init -y
           npm install @capacitor/core @capacitor/cli @capacitor/android
+          npm install @capacitor/assets
 
-      - name: Setup Capacitor
+      - name: Setup Capacitor & Icons
         run: |
           npx cap init "Butce Asistani" "com.butce.app" --web-dir=www
+          # İkonu geçici olarak assets klasörüne kopyala
+          mkdir -p assets
+          cp www/icon.png assets/icon.png || true
+          # Android ikonlarını otomatik oluştur
+          npx capacitor-assets generate --android
           npx cap add android
           npx cap sync android
 
-      - name: Fix Kotlin Conflicts (Aggressive)
+      - name: Fix Kotlin Conflicts
         run: |
           cd android
-          # 1. Tüm alt modüllerde eski jdk7 ve jdk8 kütüphanelerini zorla hariç tut
           echo "" >> build.gradle
           echo "subprojects {" >> build.gradle
           echo "    configurations.all {" >> build.gradle
@@ -39,7 +44,6 @@ jobs:
           echo "    }" >> build.gradle
           echo "}" >> build.gradle
           
-          # 2. app modülünde de ayrıca hariç tutma işlemini garantile
           echo "" >> app/build.gradle
           echo "configurations.all {" >> app/build.gradle
           echo "    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk7'" >> app/build.gradle
