@@ -19,19 +19,24 @@ jobs:
           npm install @capacitor/core @capacitor/cli @capacitor/android
           npm install @capacitor/assets
 
-      - name: Setup Capacitor & Icons
+      - name: Setup Capacitor & Generate Icons
         run: |
           npx cap init "Butce Asistani" "com.butce.app" --web-dir=www
-          # Eğer icon.png varsa Android ikonlarını oluştur
+          
+          # İkon dosyasını (icon.png) assets klasörüne kopyala
           mkdir -p assets
           cp www/icon.png assets/icon.png || true
+          
+          # Android ikonlarını otomatik oluştur
           npx capacitor-assets generate --android
+          
           npx cap add android
           npx cap sync android
 
       - name: Fix Kotlin Conflicts
         run: |
           cd android
+          # Kotlin kütüphane çakışmalarını (Duplicate class) önlemek için Gradle ayarlarını düzenle
           echo "" >> build.gradle
           echo "subprojects {" >> build.gradle
           echo "    configurations.all {" >> build.gradle
