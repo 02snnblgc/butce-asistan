@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#8b5cf6">
   <title>Bütçe Asistanı Pro</title>
+  <!-- S&B İKONU (Amblem) -->
   <link rel="icon" type="image/png" href="icon.png">
   
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,31 +14,46 @@
 </head>
 <body>
 
-<!-- GİRİŞ EKRANI -->
-<div id="auth-screen">
+<!-- ==================== GİRİŞ EKRANI ==================== -->
+<div id="auth-screen" style="display:flex;">
   <div class="auth-card">
     <h2 style="margin-bottom: 20px; color: var(--accent);"><i class="fa-solid fa-wallet"></i> Bütçe Asistanı</h2>
+    
+    <!-- Profil Fotoğrafı -->
     <div class="avatar-uploader">
       <div class="avatar-preview" id="avatar-preview"><i class="fa-solid fa-user"></i></div>
       <label class="avatar-edit-label" for="avatar-file"><i class="fa-solid fa-camera"></i></label>
       <input type="file" id="avatar-file" accept="image/*" hidden>
     </div>
+
     <form id="login-form">
       <div class="form-group">
         <label>Kullanıcı Adı</label>
-        <input type="text" id="username-input" class="form-control" placeholder="Adınızı girin..." required>
+        <input type="text" id="username-input" class="form-control" placeholder="Adınızı girin..." required autocomplete="username">
       </div>
       <div class="form-group">
         <label>PIN Kodu (4-6 haneli)</label>
-        <input type="password" id="pin-input" class="form-control" placeholder="••••" inputmode="numeric" maxlength="6" required>
+        <input type="password" id="pin-input" class="form-control" placeholder="••••" inputmode="numeric" maxlength="6" required autocomplete="current-password">
       </div>
-      <button type="submit" class="btn" id="auth-submit-btn">Giriş Yap</button>
+      <div class="form-group" id="pin-confirm-group" style="display:none;">
+        <label>PIN Tekrar</label>
+        <input type="password" id="pin-confirm" class="form-control" placeholder="••••" inputmode="numeric" maxlength="6">
+      </div>
+      <button type="submit" class="btn" id="auth-submit-btn">Giriş Yap / Kayıt Ol</button>
+      <p style="font-size: .8rem; color: var(--text-muted); margin-top: 10px;" id="auth-hint">Yeni kullanıcıysanız hesap otomatik oluşturulur.</p>
     </form>
   </div>
 </div>
 
-<!-- ANA UYGULAMA -->
-<div id="app-screen">
+<!-- ==================== ANA UYGULAMA ==================== -->
+<div id="app-screen" style="display:none;">
+  
+  <!-- Yazdırma Başlığı -->
+  <div class="print-header">
+    <h2>Aylık Gelir - Gider Raporu</h2>
+    <p id="print-period-info">Dönem: - | Kullanıcı: -</p>
+  </div>
+
   <header class="app-header">
     <div class="user-info">
       <div class="user-avatar" id="user-avatar"><i class="fa-solid fa-user"></i></div>
@@ -46,44 +62,62 @@
         <span style="font-size: .75rem; color: var(--text-muted);">Aktif Hesap</span>
       </div>
     </div>
+    
+    <!-- Üst Butonlar -->
     <div class="settings-bar">
+      <button class="icon-btn" data-action="export-pdf" title="PDF Rapor Al"><i class="fa-solid fa-file-pdf"></i></button>
+      <button class="icon-btn" data-action="export-json" title="Yedekle (Dışa Aktar)"><i class="fa-solid fa-download"></i></button>
+      <label class="icon-btn" title="Yükle (İçe Aktar)" style="cursor: pointer; margin: 0;">
+        <i class="fa-solid fa-upload"></i>
+        <input type="file" id="import-file" accept=".json" style="display: none;">
+      </label>
       <button class="icon-btn" data-action="open-settings" title="Ayarlar"><i class="fa-solid fa-gear"></i></button>
       <button class="icon-btn" data-action="toggle-theme" title="Tema"><i class="fa-solid fa-moon" id="theme-icon"></i></button>
       <button class="icon-btn" data-action="logout" title="Çıkış"><i class="fa-solid fa-right-from-bracket"></i></button>
     </div>
   </header>
 
-  <div id="alert-banner" style="display:none; background: #fee2e2; color: #dc2626; padding: 12px; border-radius: 12px; margin-bottom: 15px; font-weight: 600; font-size: .9rem; text-align: center; border: 1px solid #fca5a5;"></div>
+  <!-- Uyarı Banner'ları -->
+  <div id="alert-banner" class="alert-banner" style="display: none;"></div>
+  <div id="budget-banner" class="alert-banner budget" style="display: none;"></div>
 
+  <!-- Dönem Seçici -->
   <div class="period-selector">
     <button class="icon-btn" id="prev-month"><i class="fa-solid fa-chevron-left"></i></button>
     <input type="month" id="active-period">
     <button class="icon-btn" id="next-month"><i class="fa-solid fa-chevron-right"></i></button>
   </div>
 
+  <!-- Özet Kartları -->
   <div class="dashboard-grid">
     <div class="dash-card"><h4>Toplam Gelir</h4><div class="amount income" id="total-income">0,00 ₺</div></div>
     <div class="dash-card"><h4>Toplam Gider</h4><div class="amount expense" id="total-expense">0,00 ₺</div></div>
     <div class="dash-card"><h4>Net Durum</h4><div class="amount balance" id="net-balance">0,00 ₺</div></div>
   </div>
 
+  <!-- Kategori Özeti -->
   <div class="card">
     <h3><i class="fa-solid fa-chart-pie" style="color:var(--accent);"></i> Kategori Özeti</h3>
     <div id="category-summary" class="category-summary"></div>
   </div>
 
   <div class="content-grid">
+    <!-- SOL TARAF: İşlem Ekleme / Düzenleme -->
     <div>
       <div class="card">
-        <h3><i class="fa-solid fa-circle-plus" style="color:var(--accent);"></i> Yeni İşlem</h3>
+        <h3><i class="fa-solid fa-circle-plus" style="color:var(--accent);"></i> <span id="form-title">Yeni İşlem Ekle</span></h3>
         <form id="transaction-form">
+          <input type="hidden" id="edit-id">
+          
           <div class="form-group">
             <label>İşlem Türü</label>
-            <select id="tx-type" class="form-control">
+            <select id="tx-type" class="form-control" onchange="toggleCategory()">
               <option value="income">Gelir</option>
               <option value="expense" selected>Gider</option>
             </select>
           </div>
+
+          <!-- Gider Kalemi Seçimi -->
           <div class="form-group" id="expense-cat-group">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
               <label style="margin: 0;">Gider Kalemi</label>
@@ -91,53 +125,134 @@
             </div>
             <select id="expense-category" class="form-control"></select>
           </div>
+
           <div class="form-group">
             <label>Açıklama / Detay</label>
-            <input type="text" id="tx-title" class="form-control" placeholder="Örn: Ocak Kirası..." required>
+            <input type="text" id="tx-title" class="form-control" placeholder="Örn: Ocak Ayı Kirası..." required>
           </div>
+
           <div class="form-group">
             <label>Tutar (₺)</label>
             <input type="number" step="0.01" id="tx-amount" class="form-control" placeholder="0.00" required>
           </div>
+
           <div class="form-group">
-            <label>Son Ödeme Tarihi</label>
+            <label>Son Ödeme / İşlem Tarihi</label>
             <input type="date" id="tx-date" class="form-control" required>
           </div>
-          <div class="form-group" style="display: flex; gap: 15px;">
-            <label style="display: flex; align-items: center; gap: 5px;"><input type="checkbox" id="tx-paid"> Ödendi</label>
+
+          <div class="form-group" style="display: flex; gap: 15px; flex-wrap: wrap;">
+            <label style="display: flex; align-items: center; gap: 5px; font-weight: 500;"><input type="checkbox" id="tx-paid"> Ödendi Olarak İşaretle</label>
+            <label style="display: flex; align-items: center; gap: 5px; font-weight: 500;"><input type="checkbox" id="tx-recurring"> Her Ay Tekrarla</label>
           </div>
-          <button type="submit" class="btn">İşlemi Kaydet</button>
+
+          <div style="display: flex; gap: 10px;">
+            <button type="submit" class="btn" id="tx-submit-btn">Kaydet</button>
+            <button type="button" class="btn btn-secondary" id="tx-cancel-edit" style="display:none;" onclick="cancelEdit()">İptal</button>
+          </div>
         </form>
       </div>
     </div>
 
+    <!-- SAĞ TARAF: İşlem Listesi ve Filtreler -->
     <div>
       <div class="card">
         <h3><i class="fa-solid fa-list-check" style="color:var(--accent);"></i> İşlemler</h3>
+        
+        <!-- Filtre ve Arama -->
+        <div class="filter-grid">
+          <input type="text" id="filter-search" class="form-control" placeholder="Ara...">
+          <select id="filter-type" class="form-control">
+            <option value="">Tüm Türler</option>
+            <option value="income">Gelir</option>
+            <option value="expense">Gider</option>
+          </select>
+          <select id="filter-paid" class="form-control">
+            <option value="">Tüm Durumlar</option>
+            <option value="paid">Ödendi</option>
+            <option value="unpaid">Ödenmedi</option>
+          </select>
+          <select id="filter-sort" class="form-control">
+            <option value="date-desc">Tarih ↓</option>
+            <option value="date-asc">Tarih ↑</option>
+            <option value="amount-desc">Tutar ↓</option>
+            <option value="amount-asc">Tutar ↑</option>
+          </select>
+        </div>
+
+        <button class="btn btn-secondary" id="btn-copy-prev-month" style="margin-top:10px; margin-bottom: 15px;">
+          <i class="fa-solid fa-copy"></i> Önceki Ayın Sabit Giderlerini Kopyala
+        </button>
+
         <div id="transaction-list" class="transaction-list"></div>
+      </div>
+
+      <!-- Dönem Notları -->
+      <div class="card">
+        <h3><i class="fa-solid fa-note-sticky" style="color:var(--accent);"></i> Dönem Notları</h3>
+        <textarea id="period-notes" class="notes-area" placeholder="Bu aya özel notlarınızı buraya yazabilirsiniz..."></textarea>
       </div>
     </div>
   </div>
 </div>
 
-<!-- AYARLAR MODALI -->
+<!-- ==================== MODAL PENCERELERİ ==================== -->
+
+<!-- Ayarlar Modalı -->
 <div class="modal" id="settings-modal">
   <div class="modal-content">
     <h3 style="margin-bottom: 20px;">Ayarlar</h3>
-    <div class="form-group">
-      <label>Alarm Testi</label>
-      <button type="button" class="btn btn-secondary" id="btn-test-alarm"><i class="fa-solid fa-bell"></i> Sesli Alarmı Test Et</button>
+    
+    <div class="settings-section">
+      <h4>Renk Paleti</h4>
+      <div class="theme-options">
+        <div class="theme-circle" style="background:#8b5cf6" data-accent="lavender"></div>
+        <div class="theme-circle" style="background:#10b981" data-accent="mint"></div>
+        <div class="theme-circle" style="background:#f97316" data-accent="peach"></div>
+        <div class="theme-circle" style="background:#eab308" data-accent="vanilla"></div>
+        <div class="theme-circle" style="background:#0ea5e9" data-accent="skyblue"></div>
+      </div>
     </div>
-    <button type="button" class="btn btn-secondary" data-close-modal>Ayarları Kapat</button>
+
+    <div class="settings-section">
+      <h4>Para Birimi</h4>
+      <select id="currency-select" class="form-control">
+        <option value="TRY">₺ Türk Lirası</option>
+        <option value="USD">$ Dolar</option>
+        <option value="EUR">€ Euro</option>
+        <option value="GBP">£ Sterlin</option>
+      </select>
+    </div>
+
+    <div class="settings-section">
+      <h4>Bütçe Limiti</h4>
+      <div style="display: flex; gap: 10px;">
+        <input type="number" id="budget-limit-input" class="form-control" placeholder="Aylık Gider Limiti (Örn: 15000)">
+        <button type="button" class="btn" style="width:auto;" onclick="saveBudgetLimit()">Kaydet</button>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <h4>Bildirim & Alarm</h4>
+      <button type="button" class="btn btn-secondary" id="btn-test-alarm" style="margin-top: 5px;"><i class="fa-solid fa-bell"></i> Sesli ve Görüntülü Alarmı Test Et</button>
+    </div>
+
+    <div class="settings-section">
+      <h4>PIN Değiştir</h4>
+      <input type="password" id="new-pin" class="form-control" placeholder="Yeni PIN (4-6)" inputmode="numeric" maxlength="6" style="margin-bottom:8px;">
+      <input type="password" id="new-pin-confirm" class="form-control" placeholder="Yeni PIN Tekrar" inputmode="numeric" maxlength="6" style="margin-bottom:8px;">
+      <button type="button" class="btn" id="btn-change-pin">PIN'i Güncelle</button>
+    </div>
+
+    <button type="button" class="btn btn-secondary" data-close-modal style="margin-top: 10px;">Ayarları Kapat</button>
   </div>
 </div>
 
-<!-- YENİ KATEGORİ MODALI -->
+<!-- Kategori Yönetimi Modalı -->
 <div class="modal" id="category-modal">
   <div class="modal-content">
-    <h3 style="margin-bottom: 20px;">Yeni Gider Kalemi</h3>
+    <h3 style="margin-bottom: 20px;">Yeni Gider Kalemi Ekle</h3>
     <div class="form-group">
-      <label>Kalem Adı</label>
       <input type="text" id="new-cat-input" class="form-control" placeholder="Örn: Kredi Kartı Ekstresi">
     </div>
     <button type="button" class="btn" onclick="addNewCategory()">Ekle</button>
@@ -145,18 +260,24 @@
   </div>
 </div>
 
-<!-- ALARM MODALI -->
+<!-- Alarm Modalı -->
 <div class="modal" id="alarm-modal">
   <div class="modal-content alarm-content">
     <div class="alarm-pulse"><i class="fa-solid fa-bell"></i></div>
     <h2 style="color: #ef4444; margin-bottom: 10px;">Ödeme Hatırlatması!</h2>
-    <div id="alarm-body" style="text-align: left; margin-bottom: 20px;"></div>
-    <button type="button" class="btn" id="alarm-ack" style="background: #ef4444;">Sesi Kapat</button>
+    <p style="color: var(--text-muted); margin-bottom: 20px;">Tarihi geçen ödemeleriniz var!</p>
+    <div id="alarm-body" style="text-align: left; margin-bottom: 20px; max-height: 150px; overflow-y: auto;"></div>
+    <button type="button" class="btn" id="alarm-ack" style="background: #ef4444;">Sesi Kapat ve Anladım</button>
   </div>
 </div>
 
+<!-- Toast Bildirimleri -->
 <div id="toast-container"></div>
+
+<!-- Gömülü Ses Dosyası (Android İçin) -->
 <audio id="alarm-sound" src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=" preload="auto" loop></audio>
+
+<!-- JavaScript Dosyası -->
 <script src="js/app.js"></script>
 </body>
 </html>
