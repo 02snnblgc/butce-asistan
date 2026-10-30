@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light" data-accent="lavender">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#8b5cf6">
+  <title>Bütçe Asistanı Pro</title>
+  
+  <!-- UYGULAMA İKONU (SVG Gömülü) -->
+  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%238b5cf6'/><path d='M30 40h40v30a10 10 0 01-10 10H40a10 10 0 01-10-10V40z' fill='white'/><path d='M30 30h40a5 5 0 015 5v5H25v-5a5 5 0 015-5z' fill='%23a78bfa'/><circle cx='65' cy='55' r='5' fill='%238b5cf6'/></svg>">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<!-- GİRİŞ EKRANI -->
+<div id="auth-screen">
+  <div class="auth-card">
+    <h2><i class="fa-solid fa-wallet"></i> Bütçe Asistanı Pro</h2>
+    <div class="avatar-uploader">
+      <div class="avatar-preview" id="avatar-preview"><i class="fa-solid fa-user"></i></div>
+      <label class="avatar-edit-label" for="avatar-file"><i class="fa-solid fa-camera"></i></label>
+      <input type="file" id="avatar-file" accept="image/*" hidden>
+    </div>
+    <form id="login-form">
+      <div class="form-group">
+        <label>Kullanıcı Adı</label>
+        <input type="text" id="username-input" class="form-control" placeholder="Adınızı girin..." required>
+      </div>
+      <div class="form-group">
+        <label>PIN Kodu (4-6 haneli)</label>
+        <input type="password" id="pin-input" class="form-control" placeholder="••••" inputmode="numeric" maxlength="6" required>
+      </div>
+      <div class="form-group" id="pin-confirm-group" style="display:none;">
+        <label>PIN Tekrar</label>
+        <input type="password" id="pin-confirm" class="form-control" placeholder="••••" inputmode="numeric" maxlength="6">
+      </div>
+      <button type="submit" class="btn" id="auth-submit-btn">Giriş Yap / Kayıt Ol</button>
+      <p class="auth-hint" id="auth-hint">Yeni kullanıcıysanız hesap otomatik oluşturulur.</p>
+    </form>
+  </div>
+</div>
+
+<!-- ANA UYGULAMA -->
+<div id="app-screen" style="display:none;">
+  <header class="app-header">
+    <div class="user-info">
+      <div class="user-avatar" id="user-avatar"><i class="fa-solid fa-user"></i></div>
+      <div>
+        <h4 id="display-username">Kullanıcı</h4>
+        <span class="user-sub">Aktif Hesap</span>
+      </div>
+    </div>
+    <div class="settings-bar">
+      <button class="icon-btn" data-action="open-settings" title="Ayarlar"><i class="fa-solid fa-gear"></i></button>
+      <button class="icon-btn" data-action="toggle-theme" title="Tema"><i class="fa-solid fa-moon" id="theme-icon"></i></button>
+      <button class="icon-btn" data-action="export-json" title="Yedekle"><i class="fa-solid fa-download"></i></button>
+      <button class="icon-btn" data-action="logout" title="Çıkış"><i class="fa-solid fa-right-from-bracket"></i></button>
+    </div>
+  </header>
+
+  <div id="alert-banner" class="alert-banner" style="display:none;"></div>
+
+  <div class="period-selector">
+    <button class="icon-btn" id="prev-month"><i class="fa-solid fa-chevron-left"></i></button>
+    <input type="month" id="active-period" class="form-control">
+    <button class="icon-btn" id="next-month"><i class="fa-solid fa-chevron-right"></i></button>
+  </div>
+
+  <div class="dashboard-grid">
+    <div class="dash-card"><h4>Toplam Gelir</h4><div class="amount income" id="total-income">0,00 ₺</div></div>
+    <div class="dash-card"><h4>Toplam Gider</h4><div class="amount expense" id="total-expense">0,00 ₺</div></div>
+    <div class="dash-card"><h4>Net Durum</h4><div class="amount balance" id="net-balance">0,00 ₺</div></div>
+  </div>
+
+  <div class="content-grid">
+    <div class="card">
+      <h3><i class="fa-solid fa-circle-plus"></i> Yeni İşlem</h3>
+      <form id="transaction-form">
+        <div class="form-group">
+          <label>İşlem Türü</label>
+          <select id="tx-type" class="form-control">
+            <option value="income">Gelir</option>
+            <option value="expense" selected>Gider</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Kategori / Açıklama</label>
+          <input type="text" id="tx-title" class="form-control" placeholder="Örn: Ev Kirası, Maaş..." required>
+        </div>
+        <div class="form-group">
+          <label>Tutar</label>
+          <input type="number" step="0.01" id="tx-amount" class="form-control" placeholder="0.00" required>
+        </div>
+        <div class="form-group">
+          <label>Son Ödeme Tarihi</label>
+          <input type="date" id="tx-date" class="form-control" required>
+        </div>
+        <div class="form-group checkbox-row">
+          <label><input type="checkbox" id="tx-paid"> Ödendi</label>
+        </div>
+        <button type="submit" class="btn">Kaydet</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h3><i class="fa-solid fa-list-check"></i> İşlemler</h3>
+      <div id="transaction-list" class="transaction-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- AYARLAR MODALI -->
+<div class="modal" id="settings-modal">
+  <div class="modal-content">
+    <h3>Ayarlar</h3>
+    <div class="settings-section">
+      <h4>Renk Paleti</h4>
+      <div class="theme-options">
+        <div class="theme-circle" style="background:#8b5cf6" data-accent="lavender"></div>
+        <div class="theme-circle" style="background:#10b981" data-accent="mint"></div>
+        <div class="theme-circle" style="background:#f97316" data-accent="peach"></div>
+      </div>
+    </div>
+    <div class="settings-section">
+      <h4>Alarm Ayarları</h4>
+      <button class="btn btn-secondary" id="btn-test-alarm" style="margin-bottom:8px;"><i class="fa-solid fa-bell"></i> Sesli Alarmı Test Et</button>
+    </div>
+    <!-- AYARLAR KAPATMA BUTONU -->
+    <button class="btn btn-secondary" data-close-modal>Ayarları Kapat</button>
+  </div>
+</div>
+
+<!-- GÖRÜNTÜLÜ ALARM MODALI -->
+<div class="modal alarm-modal" id="alarm-modal">
+  <div class="modal-content alarm-content">
+    <div class="alarm-pulse"><i class="fa-solid fa-bell"></i></div>
+    <h2>Ödeme Hatırlatması!</h2>
+    <div id="alarm-body"></div>
+    <button class="btn" id="alarm-ack">Tamam, Anladım</button>
+  </div>
+</div>
+
+<div id="toast-container"></div>
+
+<!-- SES DOSYASI (Base64 Gömülü - Android İçin En Garantili Yöntem) -->
+<audio id="alarm-sound" src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=" preload="auto"></audio>
+
+<script src="js/app.js"></script>
+</body>
+</html>
